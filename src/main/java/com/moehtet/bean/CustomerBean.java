@@ -1,5 +1,6 @@
 package com.moehtet.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,16 +9,42 @@ import javax.faces.bean.ViewScoped;
 
 import com.moehtet.entity.Customer;
 
-@ManagedBean
+@ManagedBean(name="customerBean")
 @ViewScoped
 public class CustomerBean {
-	public List<Customer> customers;
-
+	/**
+	 * 
+	 */
+	private String name = "Aung";
+	private List<Customer> customers;
+	private String myAjax;
 	public List<Customer> getCustomers() {
 		return customers;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public String getMyAjax() {
+		return myAjax;
+	}
+
+	public void setMyAjax(String myAjax) {
+		this.myAjax = myAjax;
+	}
+
 	@PostConstruct
-	public void setUp() {
+	public void init() {
+		List<Customer> customers= new ArrayList<>();
+		System.out.println("Start ........");
 		Customer c1 = new Customer();
 		c1.setCustomerId(1);
 		c1.setFirstName("AA");
@@ -35,5 +62,10 @@ public class CustomerBean {
 		c3.setFirstName("ee");
 		c3.setLastName("ff");
 		customers.add(c3);
+		this.customers=customers;
+		System.out.println("end ........");
+	}
+	public void test() {
+		System.out.println("Hello ...... ");
 	}
 }
