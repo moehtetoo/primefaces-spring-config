@@ -6,24 +6,32 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:p="http://primefaces.org/ui">
  
-    <h:head></h:head>
+    <h:head>
+    	<title>Test</title>
+    </h:head>
     <body>
     	<f:view>
     	
     	<h:form>
-        	Text :
+    		
         	<h:outputText value="#{customerBean.name}"></h:outputText>
         	<p:dataTable var="c" value="#{customerBean.customers}">
         		<p:column headerText="Id">
         			<h:outputText value="#{c.customerId}"></h:outputText>
         		</p:column>
+        		<p:column headerText="First Name">
+        			<h:outputText value="#{c.firstName}"></h:outputText>
+        		</p:column>
+        		<p:column headerText="last Name">
+        			<h:outputText value="#{c.lastName}"></h:outputText>
+        		</p:column>
         	</p:dataTable>
+        	<input id="name" value="#{customerBean.myAjax}"/>
+        	
+        	<p:commandButton value="Submit" update="display"></p:commandButton>
+        	<h:outputText id="display" value="#{customerBean.myAjax}"/>
         </h:form>
     	</f:view>
-        <h1>Spring MVC Web with Primefaces</h1>
-        <!-- <f:metadata>
-        	<f:viewAction action="#{customerBean.setUp}"></f:viewAction>
-        </f:metadata> -->
-        
+    	
     </body>
 </html>

@@ -15,8 +15,9 @@ public class CustomerBean {
 	/**
 	 * 
 	 */
-	public String name = "Aung";
-	public List<Customer> customers;
+	private String name = "Aung";
+	private List<Customer> customers;
+	private String myAjax;
 	public List<Customer> getCustomers() {
 		return customers;
 	}
@@ -32,8 +33,16 @@ public class CustomerBean {
 	public String getName() {
 		return name;
 	}
+	public String getMyAjax() {
+		return myAjax;
+	}
+
+	public void setMyAjax(String myAjax) {
+		this.myAjax = myAjax;
+	}
+
 	@PostConstruct
-	public void setUp() {
+	public void init() {
 		List<Customer> customers= new ArrayList<>();
 		System.out.println("Start ........");
 		Customer c1 = new Customer();
