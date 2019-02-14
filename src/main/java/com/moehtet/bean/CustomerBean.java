@@ -6,15 +6,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.context.FacesContext;
 import com.moehtet.entity.Customer;
 
 @ManagedBean(name="customerBean")
 @ViewScoped
 public class CustomerBean {
-	/**
-	 * 
-	 */
 	private String name = "Aung";
 	private List<Customer> customers;
 	private String myAjax;
@@ -40,6 +37,7 @@ public class CustomerBean {
 	public void setMyAjax(String myAjax) {
 		this.myAjax = myAjax;
 	}
+	
 
 	@PostConstruct
 	public void init() {
@@ -64,8 +62,14 @@ public class CustomerBean {
 		customers.add(c3);
 		this.customers=customers;
 		System.out.println("end ........");
+		
 	}
-	public void test() {
-		System.out.println("Hello ...... ");
+	public String next() {
+		return "next.xhtml?redirect = true";
 	}
+	public void testAjax(){
+		this.myAjax = myAjax.toUpperCase();
+		System.out.println("method testAjax : "+FacesContext.getCurrentInstance().getExternalContext().getRealPath("/"));
+	}
+	
 }

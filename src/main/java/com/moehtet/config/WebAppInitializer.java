@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan
+@ComponentScan("com.moehtet")
 public class WebAppInitializer implements WebApplicationInitializer{
 
 	@Override

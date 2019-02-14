@@ -26,10 +26,16 @@ xmlns:p="http://primefaces.org/ui">
         			<h:outputText value="#{c.lastName}"></h:outputText>
         		</p:column>
         	</p:dataTable>
-        	<input id="name" value="#{customerBean.myAjax}"/>
-        	
-        	<p:commandButton value="Submit" update="display"></p:commandButton>
-        	<h:outputText id="display" value="#{customerBean.myAjax}"/>
+        	<p:inputText id="ajax" value="#{customerBean.myAjax}">
+        		<p:ajax event="keyup" update="out" listener="#{customerBean.testAjax}"></p:ajax>
+        	</p:inputText>
+        	<h:outputText id="out" value="#{customerBean.myAjax}"></h:outputText>
+        	<p:ajaxStatus onstart="PF('myStatus').show()" onsuccess="PF('myStatus').hide()"></p:ajaxStatus>
+        	<p:dialog widgetVar="myStatus"  modal="true" draggable="false" closable="false" resizable="true" showHeader="false">
+				<p:graphicImage  value="images/ajaxloadingbar.gif"/>
+        	</p:dialog>
+        	<p:commandButton actionListener="#{customerBean.testAjax}" update="out" value="Click"/>
+        	<p:commandLink action="#{customerBean.next}" value="Next"></p:commandLink>
         </h:form>
     	</f:view>
     	
