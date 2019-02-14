@@ -12,22 +12,28 @@
 <body>
 	<h:form>
 		<h:outputLabel value="Enter something" />
-		<p:inputText value="#{nextBean.text}"></p:inputText>
-		<br />
+		<p:inputText value="#{nextBean.text}">
+			<p:ajax event="keyup" update="text" />
+		</p:inputText><span> </span>
+		<h:outputText id="text" value="#{nextBean.text}"/><br />
+		
+		<br /><br/><br/>
 		<p:selectOneMenu id="countires" value="#{nextBean.country}">
-			<f:ajax listener="#{nextBean.selectChangeListener}" update="uuu" />
+			<p:ajax listener="#{nextBean.selectChangeListener}" update="uuu" />
 			<f:selectItems value="#{nextBean.countries}" />
-		</p:selectOneMenu>
-		<br />
+		</p:selectOneMenu><span>   </span>
 		<p:outputLabel for="uuu"></p:outputLabel>
 		<p:selectOneMenu id="uuu" value="#{nextBean.city}">
 			<f:selectItems value="#{nextBean.cities}" />
 		</p:selectOneMenu>
-		<p:commandButton update="text" value="Update"></p:commandButton>
-		<h:outputText id="text" value="#{nextBean.text}"></h:outputText><br />
+		<br/><br/>
+		
 		<h:outputLabel>Auto Complete</h:outputLabel>
 		<p:autoComplete id="sample" value="#{nextBean.text}" completeMethod="#{nextBean.autoComplete}"/>
+		<br/><br/><br/>
 		
+		<p:outputLabel value="Calendar"/>
+		<p:calendar value="#{nextBean.date}" maxdate="#{nextBean.today}" effect="fold"></p:calendar>
 	</h:form>
 </body>
 </html>
