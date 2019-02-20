@@ -14,10 +14,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 @ManagedBean(name = "nextBean")
 @ViewScoped
-public class NextBean implements Serializable{
-	/**
-	 * 
-	 */
+public class NextBean {
 	private String text;
 	private String country;
 	private String city;
